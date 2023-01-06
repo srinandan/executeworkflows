@@ -1,0 +1,11 @@
+{
+    "displayName": "executeworkflows-authconfig",
+    "description": "this SA has permissions to invoke Workflow Executions",
+    "visibility": "CLIENT_VISIBLE",
+    "decryptedCredential": {
+      "serviceAccountCredentials": {
+        "serviceAccount": "<sa-name>@<project-id>.iam.gserviceaccount.com",
+        "scope": "https://www.googleapis.com/auth/cloud-platform"
+      }
+    }
+}

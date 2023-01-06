@@ -1,0 +1,424 @@
+{
+  "name": "projects/102128743119/locations/us-west1/integrations/executeworkflows/versions/73c17035-5220-4f63-a115-6e4c9ecdec87",
+  "updateTime": "2023-01-06T03:40:07.642Z",
+  "lockHolder": "user@google.com",
+  "createTime": "2023-01-06T03:39:50.869Z",
+  "lastModifierEmail": "user@google.com",
+  "triggerConfigs": [{
+    "label": "Invoke Workflows",
+    "startTasks": [{
+      "taskId": "1"
+    }],
+    "properties": {
+      "Trigger name": "executeworkflows_API_1"
+    },
+    "triggerType": "API",
+    "triggerNumber": "1",
+    "triggerId": "api_trigger/executeworkflows_API_1"
+  }, {
+    "label": "Execution Status",
+    "startTasks": [{
+      "taskId": "3"
+    }],
+    "properties": {
+      "Trigger name": "executeworkflows_API_2"
+    },
+    "triggerType": "API",
+    "triggerNumber": "2",
+    "triggerId": "api_trigger/executeworkflows_API_2"
+  }],
+  "taskConfigs": [{
+    "task": "GenericRestV2Task",
+    "taskId": "1",
+    "parameters": {
+      "throwError": {
+        "key": "throwError",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      "responseBody": {
+        "key": "responseBody",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_1_responseBody`$"]
+          }
+        }
+      },
+      "disableSSLValidation": {
+        "key": "disableSSLValidation",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      "httpParams": {
+        "key": "httpParams"
+      },
+      "authConfig": {
+        "key": "authConfig",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.authconfig.AuthConfigTaskParam\",\n  \"authConfigId\": \"6a6aed7a-6318-41b7-805a-83b122859576\"\n}"
+        }
+      },
+      "responseHeader": {
+        "key": "responseHeader",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_1_responseHeader`$"]
+          }
+        }
+      },
+      "userAgent": {
+        "key": "userAgent",
+        "value": {
+          "stringValue": ""
+        }
+      },
+      "httpMethod": {
+        "key": "httpMethod",
+        "value": {
+          "stringValue": "POST"
+        }
+      },
+      "responseStatus": {
+        "key": "responseStatus",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_1_responseStatus`$"]
+          }
+        }
+      },
+      "url": {
+        "key": "url",
+        "value": {
+          "stringValue": "https://workflowexecutions.googleapis.com/v1/projects/my-project/locations/us-west1/workflows/sample/executions"
+        }
+      },
+      "urlFetchingService": {
+        "key": "urlFetchingService",
+        "value": {
+          "stringValue": "HARPOON"
+        }
+      },
+      "useSSL": {
+        "key": "useSSL",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      "requestorId": {
+        "key": "requestorId",
+        "value": {
+          "stringValue": ""
+        }
+      },
+      "urlQueryStrings": {
+        "key": "urlQueryStrings"
+      },
+      "requestBody": {
+        "key": "requestBody",
+        "value": {
+          "stringValue": "$workflowsArgument$"
+        }
+      },
+      "followRedirects": {
+        "key": "followRedirects",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      "additionalHeaders": {
+        "key": "additionalHeaders"
+      }
+    },
+    "nextTasks": [{
+      "taskId": "2"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Execute Workflows"
+  }, {
+    "task": "GenericRestV2Task",
+    "taskId": "3",
+    "parameters": {
+      "throwError": {
+        "key": "throwError",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      "responseBody": {
+        "key": "responseBody",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_3_responseBody`$"]
+          }
+        }
+      },
+      "disableSSLValidation": {
+        "key": "disableSSLValidation",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      "httpParams": {
+        "key": "httpParams"
+      },
+      "authConfig": {
+        "key": "authConfig",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.authconfig.AuthConfigTaskParam\",\n  \"authConfigId\": \"6a6aed7a-6318-41b7-805a-83b122859576\"\n}"
+        }
+      },
+      "responseHeader": {
+        "key": "responseHeader",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_3_responseHeader`$"]
+          }
+        }
+      },
+      "userAgent": {
+        "key": "userAgent",
+        "value": {
+          "stringValue": ""
+        }
+      },
+      "httpMethod": {
+        "key": "httpMethod",
+        "value": {
+          "stringValue": "GET"
+        }
+      },
+      "responseStatus": {
+        "key": "responseStatus",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_3_responseStatus`$"]
+          }
+        }
+      },
+      "url": {
+        "key": "url",
+        "value": {
+          "stringValue": "$executionUrl$"
+        }
+      },
+      "urlFetchingService": {
+        "key": "urlFetchingService",
+        "value": {
+          "stringValue": "HARPOON"
+        }
+      },
+      "useSSL": {
+        "key": "useSSL",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      "requestorId": {
+        "key": "requestorId",
+        "value": {
+          "stringValue": ""
+        }
+      },
+      "urlQueryStrings": {
+        "key": "urlQueryStrings"
+      },
+      "requestBody": {
+        "key": "requestBody",
+        "value": {
+          "stringValue": ""
+        }
+      },
+      "followRedirects": {
+        "key": "followRedirects",
+        "value": {
+          "booleanValue": true
+        }
+      },
+      "additionalHeaders": {
+        "key": "additionalHeaders"
+      }
+    },
+    "nextTasks": [{
+      "taskId": "4"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Get Execution Status"
+  }, {
+    "task": "JavaScriptTask",
+    "taskId": "4",
+    "parameters": {
+      "script": {
+        "key": "script",
+        "value": {
+          "stringValue": "\n/**\n * Function that is called during the JavaScript Task execution.\n * @param {IntegrationEvent} event\n */\nfunction executeScript(event) {\n    var response \u003d JSON.parse(event.getParameter(\"`Task_3_responseBody`\"));\n\n    //log the response\n    event.log(response);\n    \n    //if there is a result, add it to the output\n    if(response.hasOwnProperty(\"result\")){\n        event.setParameter(\"executionResult\", response.result);\n    }\n\n    //if there is an error, add it to the output\n    if(response.hasOwnProperty(\"error\")){\n        event.setParameter(\"executionError\", response.error);\n    }\n\n    //capture the state\n    event.setParameter(\"executionState\", response.state);    \n}\n"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Check Execution Status"
+  }, {
+    "task": "JavaScriptTask",
+    "taskId": "2",
+    "parameters": {
+      "script": {
+        "key": "script",
+        "value": {
+          "stringValue": "\n/**\n * Function that is called during the JavaScript Task execution.\n * @param {IntegrationEvent} event\n */\nfunction executeScript(event) {\n\n    var response \u003d JSON.parse(event.getParameter(\"`Task_1_responseBody`\"));\n    \n    //log response\n    event.log(response);\n\n    event.setParameter(\"workflowsExecutionState\", response.state);\n    event.setParameter(\"workflowsExecutionUrl\", \"https://workflowexecutions.googleapis.com/v1/\" + response.name);\n\n    if(response.hasOwnProperty(\"result\")){\n        event.setParameter(\"workflowResult\", response.result);\n    }\n\n    if (response.hasOwnProperty(\"error\")) {\n        event.setParameter(\"error\", response.error);\n    }     \n}\n"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "5",
+      "condition": "$workflowsExecutionState$ \u003d \"ACTIVE\""
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Check Workflows Response"
+  }, {
+    "task": "SubWorkflowWhileLoopV2Task",
+    "taskId": "5",
+    "parameters": {
+      "aggregatorParameterMapping": {
+        "key": "aggregatorParameterMapping"
+      },
+      "triggerId": {
+        "key": "triggerId",
+        "value": {
+          "stringValue": "api_trigger/executeworkflows_API_2"
+        }
+      },
+      "loopMetadata": {
+        "key": "loopMetadata",
+        "value": {
+          "stringArray": {
+            "stringValues": ["$`Task_5_loopMetadata`$"]
+          }
+        }
+      },
+      "disableEucPropagation": {
+        "key": "disableEucPropagation",
+        "value": {
+          "booleanValue": false
+        }
+      },
+      "whileCondition": {
+        "key": "whileCondition",
+        "value": {
+          "stringValue": "$workflowsExecutionState$ \u003d \"ACTIVE\""
+        }
+      },
+      "workflowName": {
+        "key": "workflowName",
+        "value": {
+          "stringValue": "executeworkflows"
+        }
+      },
+      "requestParameterMapping": {
+        "key": "requestParameterMapping",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.ParameterMap\",\n  \"entries\": [{\n    \"key\": {\n      \"literalValue\": {\n        \"stringValue\": \"workflowsExecutionUrl\"\n      }\n    },\n    \"value\": {\n      \"literalValue\": {\n        \"stringValue\": \"executionUrl\"\n      }\n    }\n  }]\n}"
+        }
+      },
+      "overrideParameterMapping": {
+        "key": "overrideParameterMapping",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.ParameterMap\",\n  \"entries\": [{\n    \"key\": {\n      \"literalValue\": {\n        \"stringValue\": \"executionResult\"\n      }\n    },\n    \"value\": {\n      \"literalValue\": {\n        \"stringValue\": \"workflowsResult\"\n      }\n    }\n  }, {\n    \"key\": {\n      \"literalValue\": {\n        \"stringValue\": \"executionState\"\n      }\n    },\n    \"value\": {\n      \"literalValue\": {\n        \"stringValue\": \"workflowsExecutionState\"\n      }\n    }\n  }, {\n    \"key\": {\n      \"literalValue\": {\n        \"stringValue\": \"executionError\"\n      }\n    },\n    \"value\": {\n      \"literalValue\": {\n        \"stringValue\": \"error\"\n      }\n    }\n  }]\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "While Loop"
+  }],
+  "integrationParameters": [{
+    "key": "`Task_1_responseHeader`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_1_responseHeader`",
+    "isTransient": true,
+    "producer": "1_1"
+  }, {
+    "key": "`Task_1_responseBody`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_1_responseBody`",
+    "isTransient": true,
+    "producer": "1_1"
+  }, {
+    "key": "`Task_1_responseStatus`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_1_responseStatus`",
+    "isTransient": true,
+    "producer": "1_1"
+  }, {
+    "key": "workflowsArgument",
+    "dataType": "JSON_VALUE",
+    "defaultValue": {
+      "jsonValue": "{\n  \"argument\": \"{\\\"searchTerm\\\":\\\"Monday\\\"}\"\n}"
+    },
+    "displayName": "workflowsArgument",
+    "inputOutputType": "IN",
+    "jsonSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"argument\": {\n      \"type\": \"string\"\n    }\n  }\n}"
+  }, {
+    "key": "workflowsResult",
+    "dataType": "STRING_VALUE",
+    "displayName": "workflowsResult",
+    "inputOutputType": "OUT"
+  }, {
+    "key": "error",
+    "dataType": "JSON_VALUE",
+    "displayName": "error",
+    "inputOutputType": "OUT"
+  }, {
+    "key": "workflowsExecutionUrl",
+    "dataType": "STRING_VALUE",
+    "displayName": "workflowsExecutionUrl"
+  }, {
+    "key": "workflowsExecutionState",
+    "dataType": "STRING_VALUE",
+    "displayName": "workflowsExecutionState"
+  }, {
+    "key": "`Task_3_responseHeader`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_3_responseHeader`",
+    "isTransient": true,
+    "producer": "1_3"
+  }, {
+    "key": "`Task_3_responseBody`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_3_responseBody`",
+    "isTransient": true,
+    "producer": "1_3"
+  }, {
+    "key": "`Task_3_responseStatus`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_3_responseStatus`",
+    "isTransient": true,
+    "producer": "1_3"
+  }, {
+    "key": "executionResult",
+    "dataType": "STRING_VALUE",
+    "displayName": "executionResult",
+    "inputOutputType": "OUT"
+  }, {
+    "key": "executionState",
+    "dataType": "STRING_VALUE",
+    "displayName": "executionState",
+    "inputOutputType": "OUT"
+  }, {
+    "key": "`Task_5_loopMetadata`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_5_loopMetadata`",
+    "isTransient": true,
+    "producer": "1_5"
+  }, {
+    "key": "executionError",
+    "dataType": "STRING_VALUE",
+    "displayName": "executionError",
+    "inputOutputType": "OUT"
+  }, {
+    "key": "executionUrl",
+    "dataType": "STRING_VALUE",
+    "displayName": "executionUrl",
+    "inputOutputType": "IN"
+  }],
+  "userLabel": "2"
+}

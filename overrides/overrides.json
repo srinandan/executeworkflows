@@ -1,0 +1,14 @@
+{
+    "task_overrides": [{
+        "taskId": "1",
+        "task": "GenericRestV2Task",
+        "parameters":  {
+            "url": {
+                "key": "url",
+                "value": {
+                    "stringValue": "https://workflowexecutions.googleapis.com/v1/projects/<project-id>/locations/<region>/workflows/<workflow-name>/executions"
+                }
+            }
+        }
+    }]
+}
