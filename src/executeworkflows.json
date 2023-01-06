@@ -1,9 +1,4 @@
 {
-  "name": "projects/102128743119/locations/us-west1/integrations/executeworkflows/versions/73c17035-5220-4f63-a115-6e4c9ecdec87",
-  "updateTime": "2023-01-06T03:40:07.642Z",
-  "lockHolder": "user@google.com",
-  "createTime": "2023-01-06T03:39:50.869Z",
-  "lastModifierEmail": "user@google.com",
   "triggerConfigs": [{
     "label": "Invoke Workflows",
     "startTasks": [{

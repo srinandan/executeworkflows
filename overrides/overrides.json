@@ -8,6 +8,12 @@
                 "value": {
                     "stringValue": "https://workflowexecutions.googleapis.com/v1/projects/<project-id>/locations/<region>/workflows/<workflow-name>/executions"
                 }
+            },
+            "authConfig": {
+                "key": "authConfig",
+                "value": {
+                    "stringValue": "executeworkflows-authconfig"
+                }
             }
         }
     }]

@@ -11,12 +11,34 @@ Workflows can be triggered via EventArc, Cloud Scheduler or through the [REST AP
 * The integration version JSON is downloaded [here](./src/executeworkflows.json)
 * This repo uses a custom cloud builder called `integrationcli-builder`. , based on [integrationcli](https://github.com/srinandan/integrationcli) and gcloud
 
+# Configuring Cloud Build
+
+In the setting page of Cloud Build enable the following service account permissions:
+* Secret Manager (Secret Manager Accessor)
+* Service Accounts (Service Account User)
+* Cloud Build (Cloud Build WorkerPool User)
+
+Grant the Application Integration Admin role to the Cloud Build Service Agent
+
+```
+    gcloud projects add-iam-policy-binding PROJECT_ID \
+        --member="serviceAccount:service-PROJECT_NUMBER@gcp-sa-cloudbuild.iam.gserviceaccount.com" \
+        --role="roles/integrations.integrationAdmin"
+```
 
 ## Steps
 
-1. Modify  the [overrides file](./overrides/overrides.json) to set the appropriate endpoint for Workflows.
+1. Modify  the [overrides file](./overrides/overrides.json) to set the appropriate endpoint for Workflows. Replace the following string
 
-2. Modify the [authconfig file](./authconfig/authconfig.json) to set the appropriate Service Account with permissions to execute a Workflow
+```
+"stringValue": "https://workflowexecutions.googleapis.com/v1/projects/<project-id>/locations/<region>/workflows/<workflow-name>/executions"
+```
+
+2. Modify the [authconfig file](./authconfig/authconfig.json) to set the appropriate Service Account with permissions to execute a Workflow. Replace the following string
+
+```
+"serviceAccount": "<sa-name>@<project-id>.iam.gserviceaccount.com",
+```
 
 3. Trigger the build manually
 
