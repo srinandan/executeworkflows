@@ -22,7 +22,6 @@ steps:
   args:
     - -c
     - |
-      set -e
       gcloud auth print-access-token > /tmp/token
 
       #setup preferences
@@ -31,8 +30,9 @@ steps:
 
       #find authconfig
       /tmp/integrationcli authconfigs get -n $(cat ./authconfig/authconfig.json| jq -r '.displayName') 2>&1 >/dev/null
-      RESULT=$?
-      if [ $RESULT -ne 0 ]; then
+      echo $? > /tmp/result
+      if [ $(cat /tmp/result) -ne 0 ]; then
+        set -e
         #create the authconfig
         /tmp/integrationcli authconfigs create -f ./authconfig/authconfig.json > /tmp/response
         echo "authconfig response: " $(cat /tmp/response)
