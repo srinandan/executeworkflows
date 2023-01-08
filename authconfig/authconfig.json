@@ -3,8 +3,9 @@
     "description": "this SA has permissions to invoke Workflow Executions",
     "visibility": "CLIENT_VISIBLE",
     "decryptedCredential": {
+      "credentialType": "SERVICE_ACCOUNT",
       "serviceAccountCredentials": {
-        "serviceAccount": "<sa-name>@<project-id>.iam.gserviceaccount.com",
+        "serviceAccount": "<my-service-account>@<project-id>.iam.gserviceaccount.com",
         "scope": "https://www.googleapis.com/auth/cloud-platform"
       }
     }
