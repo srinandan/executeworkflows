@@ -16,7 +16,29 @@
 # gcloud builds submit --config=deploy.yaml --project=project-name --region=us-west1
 
 steps:
-- id: 'Import an integration version to a region'
+- id: 'Create authconfig if not already present'
+  name: ghcr.io/srinandan/integrationcli-builder:latest
+  entrypoint: 'bash'
+  args:
+    - -c
+    - |
+      set -e
+      gcloud auth print-access-token > /tmp/token
+
+      #setup preferences
+      /tmp/integrationcli prefs set integrationcli prefs set --nocheck=true --apigee-integration=false --reg=$LOCATION --proj=$PROJECT_ID
+      /tmp/integrationcli token cache -t $(cat /tmp/token)
+
+      #find authconfig
+      /tmp/integrationcli authconfigs get -n $(cat ./authconfig/authconfig.json| jq -r '.displayName') 2>&1 >/dev/null
+      RESULT=$?
+      if [ $RESULT -ne 0 ]; then
+        #create the authconfig
+        /tmp/integrationcli authconfigs create -f ./authconfig/authconfig.json > /tmp/response
+        echo "authconfig response: " $(cat /tmp/response)
+      fi
+
+- id: 'Create and publish the integration version'
   name: ghcr.io/srinandan/integrationcli-builder:latest
   entrypoint: 'bash'
   args:
@@ -34,15 +56,6 @@ steps:
       #setup preferences
       /tmp/integrationcli prefs set integrationcli prefs set --nocheck=true --apigee-integration=false --reg=$LOCATION --proj=$PROJECT_ID
       /tmp/integrationcli token cache -t $(cat /tmp/token)
-
-      #find authconfig
-      /tmp/integrationcli authconfigs get -n $(cat /tmp/authconfig) 2>&1 >/dev/null
-      RESULT=$?
-      if [ $RESULT -ne 0 ]; then
-        #create the authconfig
-        /tmp/integrationcli authconfigs create -f ./authconfig/authconfig.json > /tmp/response
-        echo "authconfig response: " $(cat /tmp/response)
-      fi
 
       #create the integration version
       /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) -u $SHORT_SHA -o ./overrides/overrides.json > /tmp/response
