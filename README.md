@@ -34,7 +34,7 @@ Grant the Application Integration Admin role to the Cloud Build Service Agent
 "stringValue": "https://workflowexecutions.googleapis.com/v1/projects/<project-id>/locations/<region>/workflows/<workflow-name>/executions"
 ```
 
-2. Modify the [authconfig file](./authconfig/authconfig.json) to set the appropriate Service Account with permissions to execute a Workflow. Replace the following string
+2. Modify the [authconfig file](./authconfig/executeworkflows-authconfig.json) to set the appropriate Service Account with permissions to execute a Workflow. Replace the following string
 
 ```
 "serviceAccount": "<sa-name>@<project-id>.iam.gserviceaccount.com",
