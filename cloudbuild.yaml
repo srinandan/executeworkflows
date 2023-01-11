@@ -31,7 +31,7 @@ steps:
       #find authconfig
       for authconfig in ./authconfig/*.json
       do
-        /tmp/integrationcli authconfig get -n  $(basename -s .json $authconfig) 2>&1 >/dev/null
+        /tmp/integrationcli authconfigs get -n  $(basename -s .json $authconfig) 2>&1 >/dev/null
         echo $? > /tmp/result
         if [ $(cat /tmp/result) -ne 0 ]; then
           set -e
