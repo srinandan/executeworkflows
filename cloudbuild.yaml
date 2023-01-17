@@ -77,7 +77,7 @@ steps:
 
 # a user label will be automatically generated if cloud build is triggered from github
 substitutions:
-  _USER_LABEL: "1"
+  _USER_LABEL: ""
 
 options:
   logging: CLOUD_LOGGING_ONLY
