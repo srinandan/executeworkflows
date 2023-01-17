@@ -75,5 +75,9 @@ steps:
       #publish the integration version
       /tmp/integrationcli integrations versions publish -n $(cat /tmp/name) -v $(cat /tmp/version)
 
+# a user label will be automatically generated if cloud build is triggered from github
+substitutions:
+  _USER_LABEL: "1"
+
 options:
   logging: CLOUD_LOGGING_ONLY
