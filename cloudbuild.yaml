@@ -61,13 +61,13 @@ steps:
       /tmp/integrationcli token cache -t $(cat /tmp/token)
 
       #create the integration version
-           if [ -z "$SHORT_SHA" ]
-      then
+      #if triggered manually, then there is no short_sha
+      if [[ -z "${SHORT_SHA}" ]]; then
          _USER_LABEL=""
       else
          _USER_LABEL="-u "$SHORT_SHA
       fi
-      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) $_USER_LABEL -o ./overrides/overrides.json > /tmp/response
+      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) ${_USER_LABEL} -o ./overrides/overrides.json > /tmp/response
       echo "integration response: " $(cat /tmp/response)
       basename $(cat /tmp/response | jq -r .name) > /tmp/version
       echo "integration version: " $(cat /tmp/version)
