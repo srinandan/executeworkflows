@@ -61,23 +61,13 @@ steps:
       /tmp/integrationcli token cache -t $(cat /tmp/token)
 
       #create the integration version
-      #if triggered manually, then there is no short_sha
-      if [[ -z "${SHORT_SHA}" ]]; then
-         _USER_LABEL=""
-      else
-         _USER_LABEL="-u "$SHORT_SHA
-      fi
-      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) -o ./overrides/overrides.json ${_USER_LABEL} > /tmp/response
+      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) -o ./overrides/overrides.json -u $SHORT_SHA > /tmp/response
       echo "integration response: " $(cat /tmp/response)
       basename $(cat /tmp/response | jq -r .name) > /tmp/version
       echo "integration version: " $(cat /tmp/version)
 
       #publish the integration version
       /tmp/integrationcli integrations versions publish -n $(cat /tmp/name) -v $(cat /tmp/version)
-
-# a user label will be automatically generated if cloud build is triggered from github
-substitutions:
-  _USER_LABEL: ""
 
 options:
   logging: CLOUD_LOGGING_ONLY
