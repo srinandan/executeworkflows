@@ -67,13 +67,17 @@ steps:
       else
          _USER_LABEL="-u "$SHORT_SHA
       fi
-      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) ${_USER_LABEL} -o ./overrides/overrides.json > /tmp/response
+      /tmp/integrationcli integrations create -n $(cat /tmp/name) -f $(cat /tmp/filename) -o ./overrides/overrides.json ${_USER_LABEL} > /tmp/response
       echo "integration response: " $(cat /tmp/response)
       basename $(cat /tmp/response | jq -r .name) > /tmp/version
       echo "integration version: " $(cat /tmp/version)
 
       #publish the integration version
       /tmp/integrationcli integrations versions publish -n $(cat /tmp/name) -v $(cat /tmp/version)
+
+# a user label will be automatically generated if cloud build is triggered from github
+substitutions:
+  _USER_LABEL: ""
 
 options:
   logging: CLOUD_LOGGING_ONLY
