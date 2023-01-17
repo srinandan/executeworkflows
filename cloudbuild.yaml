@@ -61,8 +61,8 @@ steps:
       /tmp/integrationcli token cache -t $(cat /tmp/token)
 
       #create the integration version
-      if [ -z "$SHORT_SHA" ]
-      then
+      #if triggered manually, then there is no short_sha
+      if [[ -z "${SHORT_SHA}" ]]; then
          _USER_LABEL=""
       else
          _USER_LABEL="-u "$SHORT_SHA
